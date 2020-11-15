@@ -8,6 +8,7 @@ export default function HomeScreen() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    
     useEffect(() => {
         const fecthData = async () => {
         try {
@@ -22,19 +23,20 @@ export default function HomeScreen() {
         };
         fecthData();
     }, []);
-        return (
-            <div>
-                {loading ? (
-                    <LoadingBox></LoadingBox>
-                ) : error ? (
-                    <MessageBox variant="danger">{error}</MessageBox>
-                ) : (
-                    <div className="row center">
-                    {products.map((product) => (
-                        <Product key={product._id} product={product}></Product>
-                    ))}
-                    </div>
-                )}
-            </div>
-        )
+    
+    return (
+        <div>
+            {loading ? (
+                <LoadingBox></LoadingBox>
+            ) : error ? (
+                <MessageBox variant="danger">{error}</MessageBox>
+            ) : (
+                <div className="row center">
+                {products.map((product) => (
+                    <Product key={product._id} product={product}></Product>
+                ))}
+                </div>
+            )}
+        </div>
+    )
 }
