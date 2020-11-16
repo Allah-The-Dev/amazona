@@ -1,10 +1,14 @@
 import express from 'express';
-import data from './data.js';
 import userRouter from './router/user.js';
 import mongoose from 'mongoose';
 import productRouter from './router/product.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
